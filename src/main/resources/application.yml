@@ -1,0 +1,15 @@
+spring:
+  datasource:
+    url: jdbc:sqlserver://server-sdcc.database.windows.net:1433;database=database-sdcc;user=amministratore@server-sdcc;password=Clarinetto.00;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;
+    username: amministratore
+    password: Clarinetto.00
+
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+      dialect: org.hibernate.dialect.SQLServer2012Dialect
+
+
+server:
+  port: 8081
