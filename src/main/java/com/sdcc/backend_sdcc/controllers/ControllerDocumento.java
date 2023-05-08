@@ -30,7 +30,7 @@ public class ControllerDocumento {
         return new ResponseEntity<>("DOCUMENTO AGGIUNTO",HttpStatus.CREATED);
     }
 
-    @GetMapping(value = "/")
+    @GetMapping(value = "")
     public List<Documento> mostraDocumenti(){
         return serviceDocumento.mostraDocumenti();
     }
