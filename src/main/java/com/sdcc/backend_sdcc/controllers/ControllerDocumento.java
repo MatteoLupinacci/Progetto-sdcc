@@ -30,14 +30,19 @@ public class ControllerDocumento {
         return new ResponseEntity<>("DOCUMENTO AGGIUNTO",HttpStatus.CREATED);
     }
 
-    @GetMapping(value = "/mostra")
-    public List<Documento> mostraCatalogo(){
+    @GetMapping(value = "/")
+    public List<Documento> mostraDocumenti(){
         return serviceDocumento.mostraDocumenti();
     }
 
     @GetMapping(value = "/cercaPerTipo")
     public List<Documento> cercaPerNome(String tipo){
         return serviceDocumento.cercaPerTipo(tipo);
+    }
+
+    @GetMapping(value = "cercaPerAnno")
+    public List<Documento> cercaPerAnno(int anno){
+        return serviceDocumento.cercaPerAnno(anno);
     }
 
     @GetMapping(value = "/cerca")

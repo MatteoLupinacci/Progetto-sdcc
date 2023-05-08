@@ -14,11 +14,12 @@ public interface RepositoryDocumento extends JpaRepository<Documento,String> {
 
     List<Documento> findByTipo(String tipo);
 
+    List<Documento> findByAnno(int anno);
+
     @Query( " select d from Documento d" +
             " WHERE (UPPER(d.tipo) like :tipo or :tipo is null) and "+
             "       (upper(d.tag) like :tag or :tag is null) and" +
             "       (d.anno = :anno or :anno is null) and" +
             "       (d.importo <= :importo or :importo is null)")
     List<Documento> ricercaConFiltri(String tipo, String tag, Integer anno, Float importo);
-
 }

@@ -34,6 +34,10 @@ public class ServiceDocumento {
         return repositoryDocumento.findByTipo(tipo);
     }
 
+    public List<Documento> cercaPerAnno(int anno) {
+        return repositoryDocumento.findByAnno(anno);
+    }
+
     @Transactional(readOnly = true)
     public List<Documento> ricercaConFiltri(String tipo, String tag, Integer anno, Float importo){
         String tip=null,ta = null;
