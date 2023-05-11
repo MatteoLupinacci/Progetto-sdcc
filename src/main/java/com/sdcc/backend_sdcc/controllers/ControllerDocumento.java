@@ -14,7 +14,7 @@ import java.util.List;
 
 @RestController
 @CrossOrigin(value = "*")
-@RequestMapping("/")
+@RequestMapping("/documenti")
 public class ControllerDocumento {
 
     @Autowired
