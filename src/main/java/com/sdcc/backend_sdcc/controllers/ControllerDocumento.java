@@ -41,8 +41,8 @@ public class ControllerDocumento {
     }
 
     @GetMapping(value = "/cerca")
-    public List<Documento> ricercaConFiltri(@Param(value = "tipo") String tipo, @Param(value = "tag") String tag, @Param(value = "anno") Integer anno, @Param(value = "importo") Float importo){
-        return serviceDocumento.ricercaConFiltri(tipo,tag,anno,importo);
+    public List<Documento> ricercaConFiltri(@Param(value = "tag") String tag, @Param(value = "anno") Integer anno, @Param(value = "importo") Float importo){
+        return serviceDocumento.ricercaConFiltri(tag,anno,importo);
     }
 
 }
