@@ -35,11 +35,6 @@ public class ControllerDocumento {
         return serviceDocumento.mostraDocumenti();
     }
 
-    @GetMapping(value = "/cercaPerTipo")
-    public List<Documento> cercaPerNome(String tipo){
-        return serviceDocumento.cercaPerTipo(tipo);
-    }
-
     @GetMapping(value = "cercaPerAnno")
     public List<Documento> cercaPerAnno(int anno){
         return serviceDocumento.cercaPerAnno(anno);

@@ -29,28 +29,21 @@ public class ServiceDocumento {
         return repositoryDocumento.findAll();
     }
 
-    @Transactional(readOnly = true)
-    public List<Documento> cercaPerTipo(String tipo){
-        return repositoryDocumento.findByTipo(tipo);
-    }
-
     public List<Documento> cercaPerAnno(int anno) {
         return repositoryDocumento.findByAnno(anno);
     }
 
     @Transactional(readOnly = true)
-    public List<Documento> ricercaConFiltri(String tipo, String tag, Integer anno, Float importo){
-        String tip=null,ta = null;
+    public List<Documento> ricercaConFiltri(String tag, Integer anno, Float importo){
+        String ta = null;
         float imp = Float.MAX_VALUE;
         int an = Integer.MAX_VALUE;
-        if(!tip.equals(" "))
-            tip = tipo;
         if (!ta.equals(" "))
             ta=tag;
         if(anno != 0)
             an = anno;
         if(importo != 0)
             imp = importo;
-        return repositoryDocumento.ricercaConFiltri(tip,ta,an,imp);
+        return repositoryDocumento.ricercaConFiltri(ta,an,imp);
     }
 }
