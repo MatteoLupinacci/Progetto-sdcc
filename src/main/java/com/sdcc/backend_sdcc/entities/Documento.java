@@ -13,9 +13,6 @@ public class Documento implements Serializable {
     private String id;
 
     @Basic
-    private String tipo; //può essere: fattura, ricevuta, scontrino
-
-    @Basic
     private String descrizione;
 
     @Basic
