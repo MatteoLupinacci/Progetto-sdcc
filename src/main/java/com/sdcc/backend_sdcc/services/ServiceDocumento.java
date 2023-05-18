@@ -46,4 +46,8 @@ public class ServiceDocumento {
             imp = importo;
         return repositoryDocumento.ricercaConFiltri(ta,an,imp);
     }
+
+    public void rimuoviDocumento(String id) {
+        repositoryDocumento.deleteById(id);
+    }
 }

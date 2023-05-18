@@ -21,13 +21,19 @@ public class ControllerDocumento {
     private ServiceDocumento serviceDocumento;
 
     @PostMapping(value = "/aggiungi")
-    public ResponseEntity aggiungiProdotto(@RequestBody Documento documento){
+    public ResponseEntity aggiungiDocumento(@RequestBody Documento documento){
         try{
             serviceDocumento.aggiungiDocumento(documento);
         }catch (DocumentoAlreadyExistsException e){
             return new ResponseEntity<>("IL DOCUMENTO ESITE GIÀ",HttpStatus.BAD_REQUEST);
         }
         return new ResponseEntity<>("DOCUMENTO AGGIUNTO",HttpStatus.CREATED);
+    }
+
+    @DeleteMapping(value = "/rimuovi")
+    public ResponseEntity rimuoviDocumento(String id){
+        serviceDocumento.rimuoviDocumento(id);
+        return new ResponseEntity<>("DOCUMENTO ELIMINATO",HttpStatus.OK);
     }
 
     @GetMapping(value = "")
