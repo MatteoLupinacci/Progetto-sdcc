@@ -50,4 +50,14 @@ public class ServiceDocumento {
     public void rimuoviDocumento(String id) {
         repositoryDocumento.deleteById(id);
     }
+
+    public int[] spesePerAnno(int annoI, int annoF) {
+        int[] ret = new int[annoF-annoI+1];
+        int pos = 0;
+        for(int i = annoI; i <= annoF; i++) {
+            ret[pos] = repositoryDocumento.speseAnno(i);
+            pos++;
+        }
+        return ret;
+    }
 }

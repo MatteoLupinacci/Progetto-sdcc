@@ -31,7 +31,7 @@ public class ControllerDocumento {
     }
 
     @DeleteMapping(value = "/rimuovi")
-    public ResponseEntity rimuoviDocumento(String id){
+    public ResponseEntity rimuoviDocumento(@Param(value = "id") String id){
         serviceDocumento.rimuoviDocumento(id);
         return new ResponseEntity<>("DOCUMENTO ELIMINATO",HttpStatus.OK);
     }
@@ -44,6 +44,11 @@ public class ControllerDocumento {
     @GetMapping(value = "cercaPerAnno")
     public List<Documento> cercaPerAnno(int anno){
         return serviceDocumento.cercaPerAnno(anno);
+    }
+
+    @GetMapping(value = "spesePerAnno")
+    public int[] spesePerAnno(@Param(value = "annoI") int annoI, @Param(value = "annoF") int annoF){
+        return serviceDocumento.spesePerAnno(annoI,annoF);
     }
 
     @GetMapping(value = "/cerca")
