@@ -47,7 +47,7 @@ public class ControllerDocumento {
     }
 
     @GetMapping(value = "/spesePerAnno")
-    public int[] spesePerAnno(@Param(value = "annoI") int annoI, @Param(value = "annoF") int annoF){
+    public float[] spesePerAnno(@Param(value = "annoI") int annoI, @Param(value = "annoF") int annoF){
         return serviceDocumento.spesePerAnno(annoI,annoF);
     }
 

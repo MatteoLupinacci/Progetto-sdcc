@@ -51,8 +51,8 @@ public class ServiceDocumento {
         repositoryDocumento.deleteById(id);
     }
 
-    public int[] spesePerAnno(int annoI, int annoF) {
-        int[] ret = new int[annoF-annoI+1];
+    public float[] spesePerAnno(int annoI, int annoF) {
+        float[] ret = new float[annoF-annoI+1];
         int pos = 0;
         for(int i = annoI; i <= annoF; i++) {
             ret[pos] = repositoryDocumento.speseAnno(i);

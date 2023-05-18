@@ -22,5 +22,5 @@ public interface RepositoryDocumento extends JpaRepository<Documento,String> {
 
     @Query( " select sum(d.importo) from Documento d" +
             " WHERE (d.anno = :anno)")
-    int speseAnno(int anno);
+    float speseAnno(int anno);
 }
