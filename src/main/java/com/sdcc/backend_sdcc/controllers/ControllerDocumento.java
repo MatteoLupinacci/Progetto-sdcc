@@ -51,6 +51,16 @@ public class ControllerDocumento {
         return serviceDocumento.spesePerAnno(annoI,annoF);
     }
 
+    @GetMapping(value = "/spesePerCategoria")
+    public Float spesePerCategoria(@Param(value = "tag") String tag){
+        return serviceDocumento.spesePerCategoria(tag);
+    }
+
+    @GetMapping(value = "/spesePerCategoria_Anno")
+    public Float spesePerCategoria_Anno(@Param(value = "anno") int anno, @Param(value = "tag") String tag){
+        return serviceDocumento.spesePerCategoria_Anno(anno,tag);
+    }
+
     @GetMapping(value = "/cerca")
     public List<Documento> ricercaConFiltri(@Param(value = "tag") String tag, @Param(value = "anno") Integer anno, @Param(value = "importo") Float importo){
         return serviceDocumento.ricercaConFiltri(tag,anno,importo);

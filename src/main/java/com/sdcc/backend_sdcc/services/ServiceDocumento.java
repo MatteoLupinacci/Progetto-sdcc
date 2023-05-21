@@ -60,4 +60,12 @@ public class ServiceDocumento {
         }
         return ret;
     }
+
+    public Float spesePerCategoria(String tag){
+        return repositoryDocumento.spesePerCategoria(tag);
+    }
+
+    public Float spesePerCategoria_Anno(int anno, String tag){
+        return repositoryDocumento.spesePerCategoria_Anno(anno,tag);
+    }
 }

@@ -22,5 +22,13 @@ public interface RepositoryDocumento extends JpaRepository<Documento,String> {
 
     @Query( " select sum(d.importo) from Documento d" +
             " WHERE (d.anno = :anno)")
-    float speseAnno(int anno);
+    Float speseAnno(int anno);
+
+    @Query( " select sum(d.importo) from Documento d" +
+            " WHERE (d.tag = :tag)")
+    Float spesePerCategoria(String tag);
+
+    @Query( " select sum(d.importo) from Documento d" +
+            " WHERE (d.anno = :anno) and (d.tag = :tag)")
+    Float spesePerCategoria_Anno(int anno, String tag);
 }
