@@ -71,7 +71,13 @@ public class ServiceDocumento {
         return ret;
     }
 
-    public Float spesePerCategoria_Anno(int anno, String tag){
-        return repositoryDocumento.spesePerCategoria_Anno(anno,tag);
+    public float[] spesePerCategoria_Anno(int anno, String[] tag){
+        float[] ret = new float[tag.length];
+        int pos = 0;
+        for(String t : tag){
+            ret[pos] = repositoryDocumento.spesePerCategoria_Anno(anno,t);
+            pos++;
+        }
+        return ret;
     }
 }
