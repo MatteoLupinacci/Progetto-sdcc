@@ -52,7 +52,7 @@ public class ControllerDocumento {
     }
 
     @GetMapping(value = "/spesePerCategoria")
-    public Float spesePerCategoria(@Param(value = "tag") String tag){
+    public float[] spesePerCategoria(@Param(value = "tag") String[] tag){
         return serviceDocumento.spesePerCategoria(tag);
     }
 
