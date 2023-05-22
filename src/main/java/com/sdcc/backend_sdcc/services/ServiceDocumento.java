@@ -38,7 +38,7 @@ public class ServiceDocumento {
         String ta = null;
         float imp = Float.MAX_VALUE;
         int an = Integer.MAX_VALUE;
-        if (!ta.equals(" "))
+        if (!tag.equals(" "))
             ta=tag;
         if(anno != 0)
             an = anno;
