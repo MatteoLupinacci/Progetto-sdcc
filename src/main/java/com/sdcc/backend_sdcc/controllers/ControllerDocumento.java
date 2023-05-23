@@ -27,7 +27,7 @@ public class ControllerDocumento {
         }catch (DocumentoAlreadyExistsException e){
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
-        return new ResponseEntity<>("DOCUMENTO AGGIUNTO",HttpStatus.CREATED);
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
     @DeleteMapping(value = "/rimuovi")
