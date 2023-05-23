@@ -25,7 +25,7 @@ public class ControllerDocumento {
         try{
             serviceDocumento.aggiungiDocumento(documento);
         }catch (DocumentoAlreadyExistsException e){
-            return new ResponseEntity<>("IL DOCUMENTO ESITE GIÀ",HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
         return new ResponseEntity<>("DOCUMENTO AGGIUNTO",HttpStatus.CREATED);
     }
@@ -33,7 +33,7 @@ public class ControllerDocumento {
     @DeleteMapping(value = "/rimuovi")
     public ResponseEntity rimuoviDocumento(@Param(value = "id") String id){
         serviceDocumento.rimuoviDocumento(id);
-        return new ResponseEntity<>("DOCUMENTO ELIMINATO",HttpStatus.OK);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @GetMapping(value = "")
