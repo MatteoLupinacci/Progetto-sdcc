@@ -20,15 +20,15 @@ public interface RepositoryDocumento extends JpaRepository<Documento,String> {
             "       (d.importo <= :importo or :importo is null)")
     List<Documento> ricercaConFiltri(String tag, Integer anno, Float importo);
 
-    @Query( " select sum(d.importo) from Documento d" +
+    @Query( " select  COALESCE(SUM(d.importo), 0) from Documento d" +
             " WHERE (d.anno = :anno)")
     Float speseAnno(int anno);
 
-    @Query( " select sum(d.importo) from Documento d" +
+    @Query( " select  COALESCE(SUM(d.importo), 0) from Documento d" +
             " WHERE (d.tag = :tag)")
     Float spesePerCategoria(String tag);
 
-    @Query( " select sum(d.importo) from Documento d" +
+    @Query( " select COALESCE(SUM(d.importo), 0) from Documento d" +
             " WHERE (d.anno = :anno) and (d.tag = :tag)")
     Float spesePerCategoria_Anno(int anno, String tag);
 }
