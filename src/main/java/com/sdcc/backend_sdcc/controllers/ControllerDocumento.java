@@ -41,7 +41,7 @@ public class ControllerDocumento {
         return serviceDocumento.mostraDocumenti();
     }
 
-    @GetMapping(value = "cercaPerAnno")
+    @GetMapping(value = "/cercaPerAnno")
     public List<Documento> cercaPerAnno(int anno){
         return serviceDocumento.cercaPerAnno(anno);
     }
