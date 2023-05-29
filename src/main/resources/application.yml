@@ -1,8 +1,8 @@
 spring:
   datasource:
-    url: jdbc:sqlserver://server-sdcc.database.windows.net:1433;database=database-sdcc;user=amministratore@server-sdcc;password=Clarinetto.00;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;
-    username: amministratore
-    password: Clarinetto.00
+  url: jdbc:sqlserver://backed-sdcc-server.database.windows.net:1433;databaseName=database;user=backed-sdcc-server-admin;password=3383WJO08775KZHZ$
+  username: backed-sdcc-server-admin
+  password: 3383WJO08775KZHZ$
 
   jpa:
     show-sql: true
