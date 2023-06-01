@@ -25,5 +25,5 @@ public class Documento implements Serializable {
     private int anno;
 
    @Basic
-   private String tag; //può essere: sanità, scuola, sport, trasporti
+   private String tag; //può essere: sanità, scuola, sport, trasporti, etc
 }

@@ -1,6 +1,7 @@
 package com.sdcc.backend_sdcc.services;
 
 import com.sdcc.backend_sdcc.entities.Documento;
+import com.sdcc.backend_sdcc.entities.Utente;
 import com.sdcc.backend_sdcc.exceptions.DocumentoAlreadyExistsException;
 import com.sdcc.backend_sdcc.repositories.RepositoryDocumento;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,23 +19,28 @@ public class ServiceDocumento {
 
     @Transactional(propagation = Propagation.REQUIRED, isolation = Isolation.READ_COMMITTED)
     public Documento aggiungiDocumento(Documento documento) throws DocumentoAlreadyExistsException {
-        if(repositoryDocumento.existsById(documento.getId()))
+        if(repositoryDocumento.existsByIdAndUtente(documento.getId(),documento.getUtente()))
             throw new DocumentoAlreadyExistsException();
         return repositoryDocumento.save(documento);
     }
 
+    @Transactional(propagation = Propagation.REQUIRED, isolation = Isolation.READ_COMMITTED)
+    public void rimuoviDocumento(String id, Utente utente) {
+        repositoryDocumento.deleteByIdAndUtente(id, utente);
+    }
+
     /** ------------ metodi di lettura ---------- **/
     @Transactional(readOnly = true)
-    public List<Documento> mostraDocumenti(){
-        return repositoryDocumento.findAll();
+    public List<Documento> mostraDocumenti(Utente utente){
+        return repositoryDocumento.findByUtente(utente);
     }
 
-    public List<Documento> cercaPerAnno(int anno) {
-        return repositoryDocumento.findByAnno(anno);
+    public List<Documento> cercaPerAnnoAndUtente(int anno, Utente utente) {
+        return repositoryDocumento.findByAnnoAndUtente(anno,utente);
     }
 
     @Transactional(readOnly = true)
-    public List<Documento> ricercaConFiltri(String tag, Integer anno, Float importo){
+    public List<Documento> ricercaConFiltri(String tag, Integer anno, Float importo, String utente){
         String ta = null;
         float imp = Float.MAX_VALUE;
         int an = Integer.MAX_VALUE;
@@ -44,38 +50,34 @@ public class ServiceDocumento {
             an = anno;
         if(importo != 0)
             imp = importo;
-        return repositoryDocumento.ricercaConFiltri(ta,an,imp);
+        return repositoryDocumento.ricercaConFiltri(ta,an,imp,utente);
     }
 
-    public void rimuoviDocumento(String id) {
-        repositoryDocumento.deleteById(id);
-    }
-
-    public float[] spesePerAnno(int annoI, int annoF) {
+    public float[] spesePerAnno(int annoI, int annoF, String utente) {
         float[] ret = new float[annoF-annoI+1];
         int pos = 0;
         for(int i = annoI; i <= annoF; i++) {
-            ret[pos] = repositoryDocumento.speseAnno(i);
+            ret[pos] = repositoryDocumento.speseAnno(i,utente);
             pos++;
         }
         return ret;
     }
 
-    public float[] spesePerCategoria(String[] tag){
+    public float[] spesePerCategoria(String[] tag, String utente){
         float[] ret = new float[tag.length];
         int pos = 0;
         for(String t : tag){
-            ret[pos] = repositoryDocumento.spesePerCategoria(t);
+            ret[pos] = repositoryDocumento.spesePerCategoria(t, utente);
             pos++;
         }
         return ret;
     }
 
-    public float[] spesePerCategoria_Anno(int anno, String[] tag){
+    public float[] spesePerCategoria_Anno(int anno, String[] tag, String utente){
         float[] ret = new float[tag.length];
         int pos = 0;
         for(String t : tag){
-            ret[pos] = repositoryDocumento.spesePerCategoria_Anno(anno,t);
+            ret[pos] = repositoryDocumento.spesePerCategoria_Anno(anno,t, utente);
             pos++;
         }
         return ret;
