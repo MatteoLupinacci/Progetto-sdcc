@@ -25,8 +25,8 @@ public class ServiceDocumento {
     }
 
     @Transactional(propagation = Propagation.REQUIRED, isolation = Isolation.READ_COMMITTED)
-    public void rimuoviDocumento(String id, Utente utente) {
-        repositoryDocumento.deleteByIdAndUtente(id, utente);
+    public void rimuoviDocumento(String id) {
+        repositoryDocumento.deleteById(id);
     }
 
     /** ------------ metodi di lettura ---------- **/

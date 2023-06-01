@@ -13,7 +13,7 @@ public interface RepositoryDocumento extends JpaRepository<Documento,String> {
 
     boolean existsByIdAndUtente(String id, Utente utente);
 
-    void deleteByIdAndUtente(String id, Utente utente);
+    void deleteById(String id);
 
     List<Documento> findByAnnoAndUtente(int anno, Utente utente);
 

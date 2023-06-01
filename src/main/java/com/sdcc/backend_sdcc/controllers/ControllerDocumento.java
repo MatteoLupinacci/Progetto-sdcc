@@ -32,8 +32,8 @@ public class ControllerDocumento {
     }
 
     @DeleteMapping(value = "/rimuovi")
-    public ResponseEntity rimuoviDocumento(@Param(value = "id") String id, @Param(value = "utente") Utente utente){
-        serviceDocumento.rimuoviDocumento(id,utente);
+    public ResponseEntity rimuoviDocumento(@Param(value = "id") String id){
+        serviceDocumento.rimuoviDocumento(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
