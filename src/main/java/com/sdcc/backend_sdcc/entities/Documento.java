@@ -12,6 +12,9 @@ public class Documento implements Serializable {
     @Id @Column(nullable = false)
     private String id;
 
+    @ManyToOne @JoinColumn(name = "id_utente")
+    private Utente utente;
+
     @Basic
     private String descrizione;
 
